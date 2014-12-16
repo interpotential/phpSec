@@ -9,6 +9,7 @@
  * @package   phpSec
  */
 namespace phpSec\Store;
+use phpSec\Crypt\Crypto;
 
 /**
  * Class for handling database storage.
@@ -157,6 +158,7 @@ class Pdo extends Store {
   }
 
   public function write($type, $id, $data) {
+    /** @var Crypto $crypto */
     $crypto = $this->psl['crypt/crypto'];
 
     /* Delete existing data first, to prevent a huge database. */
